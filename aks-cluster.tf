@@ -28,7 +28,7 @@ resource "local_file" "kubeconfig" {
 }
 
 resource "helm_release" "traefik" {
-  namespace        = "traefik"
+  namespace        = "traefik-v2"
   create_namespace = true
   name             = "traefik"
   repository       = "https://helm.traefik.io/traefik"
