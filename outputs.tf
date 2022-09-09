@@ -37,7 +37,7 @@ output "cluster_password" {
 }
 
 output "acr_login_server" {
-  value     = azurerm_container_registry.acr.login_server
+  value = azurerm_container_registry.acr.login_server
 }
 
 output "acr_admin_username" {
