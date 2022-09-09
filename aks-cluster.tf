@@ -22,9 +22,9 @@ resource "azurerm_kubernetes_cluster" "default" {
 }
 
 resource "local_file" "kubeconfig" {
-  filename     = "~/.kube/config"
-  content      = azurerm_kubernetes_cluster.default.kube_config_raw
-  depends_on   = [azurerm_kubernetes_cluster.default]
+  filename   = "~/.kube/config"
+  content    = azurerm_kubernetes_cluster.default.kube_config_raw
+  depends_on = [azurerm_kubernetes_cluster.default]
 }
 
 resource "helm_release" "traefik" {
@@ -33,5 +33,5 @@ resource "helm_release" "traefik" {
   name             = "traefik"
   repository       = "https://helm.traefik.io/traefik"
   chart            = "traefik"
-  depends_on   = [local_file.traefik]
+  depends_on       = [local_file.kubeconfig]
 }
