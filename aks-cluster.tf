@@ -22,7 +22,7 @@ resource "azurerm_kubernetes_cluster" "default" {
 }
 
 resource "local_file" "kubeconfig" {
-  filename   = "~/.kube/config"
+  filename   = "./.kube/config"
   content    = azurerm_kubernetes_cluster.default.kube_config_raw
   depends_on = [azurerm_kubernetes_cluster.default]
 }
